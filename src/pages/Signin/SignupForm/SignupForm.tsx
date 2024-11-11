@@ -60,7 +60,7 @@ const SignupForm: FC = () => {
           }}
           placeholder="Password"
         />
-        <div className="flex flex-row ml-[60px] mb-2 p-1  text-center w-[90%] max-w-[320px] md:w-full justify-center items-center">
+        <div className="flex flex-row ml-[70px] md:ml-[100px] mb-2 p-1 text-center w-[90%] max-w-[320px] md:w-[90%] justify-center items-center">
           <input
             type="text"
             value={firstName}

@@ -9,7 +9,7 @@ interface ListItemProps {
 const ListItem: FC<ListItemProps> = ({ children, url }) => {
   return (
     // Navlink here used to show the active page and children contain the detail of the tag element
-    <li className="w-full sm:w-auto">
+    <li className="w-full sm:w-auto md:hidden">
       <NavLink
         to={url}
         className={({ isActive }) =>
