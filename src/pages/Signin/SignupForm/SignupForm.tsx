@@ -60,24 +60,27 @@ const SignupForm: FC = () => {
           }}
           placeholder="Password"
         />
-        <div className="flex flex-row mb-2">
-          <Input
+        <div className="flex flex-row ml-[60px] mb-2 p-1  text-center w-[90%] max-w-[320px] md:w-full justify-center items-center">
+          <input
             type="text"
             value={firstName}
             onChange={(e) => {
               dispatch(setFirstName(e.target.value));
             }}
             placeholder="First Name"
+            className="border-black my-2 mr-2 text-black border-2 w-[90%] max-w-[320px] md:w-full p-2 md:p-3 rounded-lg"
           />
-          <Input
+          <input
             type="text"
             value={lastName}
             onChange={(e) => {
               dispatch(setLastName(e.target.value));
             }}
             placeholder="Last Name"
+            className="border-black my-2 ml-2 text-black border-2 w-[90%] max-w-[320px] md:w-full p-2 md:p-3 rounded-lg"
           />
         </div>
+
         <input
           type="number"
           value={age}
@@ -85,7 +88,7 @@ const SignupForm: FC = () => {
             dispatch(setAge(e.target.value));
           }}
           placeholder="Age"
-          className="border-black my-2 ml-2 text-black border-2 w-full p-2 rounded-lg"
+          className="border-black my-2 ml-2 text-black border-2 w-[90%] max-w-[320px] md:w-[90%] p-2 md:p-3 rounded-lg"
         />
         <Buttons>{loading ? "Sign up...." : "Sign Up"}</Buttons>
         <TermCondition />

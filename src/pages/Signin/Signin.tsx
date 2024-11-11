@@ -1,14 +1,14 @@
 // Signin component
+import ClearIcon from "@mui/icons-material/Clear";
 import { Box, Modal } from "@mui/material";
 import { FC } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { useNavigate } from "react-router-dom";
-import { googleLogin } from "../../utils/authActions";
 import { setOpen, setShowSignup } from "../../utils/authSlice";
 import { AppDispatch } from "../../utils/store";
 import OR from "./OR/OR";
 import ShowSignupDetails from "./ShowSignupDetails/ShowSignupDetails";
 import SigninForm from "./SignInForm/SigninForm";
+import SignInHeader from "./SigninHeader/SignInHeader";
 import SignupForm from "./SignupForm/SignupForm";
 
 const Signin: FC = () => {
@@ -22,11 +22,6 @@ const Signin: FC = () => {
     (state: { auth: { showSignup: boolean } }) => state.auth.showSignup
   );
   const dispatch = useDispatch<AppDispatch>();
-  const navigate = useNavigate();
-
-  const handleGoogleLogin = () => {
-    dispatch(googleLogin(navigate));
-  };
 
   return (
     <Modal
@@ -35,58 +30,54 @@ const Signin: FC = () => {
         dispatch(setOpen(false));
       }}
     >
-      <Box className="absolute rounded-xl top-1/2 left-1/2 bg-white transform -translate-x-1/2 -translate-y-1/2 flex flex-col md:flex-row text-white border border-black shadow-lg p-4">
-        <div className="mt-28">
-          <img
-            src="./login.jpg"
-            alt="Logo in the login page"
-            className="w-[300px] h-[300px] p-4 items-center justify-center"
-          />
-        </div>
-        <div className="p-2 text-black">
-          <h1 className="font-bold text-[20px] text-black mb-10 text-center mx-4">
-            Create a free account to <br /> discover your personalized <br />{" "}
-            learning path
-          </h1>
-          <div className="text-center">
-            <button
-              onClick={handleGoogleLogin}
-              className="w-full border mx-1 cursor-pointer flex items-center justify-center py-2 border-b-4 rounded-3xl border-gray-300 bg-white"
-            >
-              <img
-                className="w-[30px] rounded-full"
-                src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQZuCylfCG2dZericOE0yON4zGwunm7XMowFm0Pr5kZNgSon3HI6IrymtxE90aJfO68pkM&usqp=CAU"
-                alt="Google Logo"
-              />
-            </button>
+      <Box className="absolute rounded-xl top-1/2 md:mt-0 left-1/2 w-[90%] md:w-[720px]  bg-white transform -translate-x-1/2 -translate-y-1/2 text-black shadow-lg">
+        <button
+          onClick={() => {
+            dispatch(setOpen(false));
+          }}
+          className="p-1 mr-2 font-bold mt-1 flex justify-end text-right ml-auto bg-gray-100 rounded-full"
+        >
+          <ClearIcon sx={{ fontSize: "25px" }} />
+        </button>
+        <div className="flex flex-col md:flex-row">
+          <div className="flex items-center justify-center text-center h-full mt-6 md:mt-40">
+            <img
+              src="./login.jpg"
+              alt="Logo in the login page"
+              className="w-[150px] md:w-[250px] h-[150px] md:h-[250px]"
+            />
           </div>
 
-          <OR />
+          <div className=" text-black">
+            <SignInHeader />
 
-          {showSignup ? (
-            <>
-              <SignupForm />
+            <OR />
 
-              <ShowSignupDetails
-                onClick={() => {
-                  dispatch(setShowSignup(false));
-                }}
-              >
-                Log In
-              </ShowSignupDetails>
-            </>
-          ) : (
-            <>
-              <SigninForm />
-              <ShowSignupDetails
-                onClick={() => {
-                  dispatch(setShowSignup(true));
-                }}
-              >
-                Sign up
-              </ShowSignupDetails>
-            </>
-          )}
+            {showSignup ? (
+              <>
+                <SignupForm />
+
+                <ShowSignupDetails
+                  onClick={() => {
+                    dispatch(setShowSignup(false));
+                  }}
+                >
+                  Log In
+                </ShowSignupDetails>
+              </>
+            ) : (
+              <>
+                <SigninForm />
+                <ShowSignupDetails
+                  onClick={() => {
+                    dispatch(setShowSignup(true));
+                  }}
+                >
+                  Sign up
+                </ShowSignupDetails>
+              </>
+            )}
+          </div>
         </div>
         <p className="text-center text-red-600 text-[15px]">{error}</p>
       </Box>

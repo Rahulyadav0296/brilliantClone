@@ -35,8 +35,9 @@ export const googleLogin = (navigate: any) => async (dispatch: AppDispatch) => {
       userId: result.user.uid,
     };
     dispatch(setUser(newUser)); // Store user data in Redux
-    localStorage.setItem("Token", result.user.accessToken); // Store token in localStorage
-    dispatch(setToken(result.user.accessToken)); // Store token in Redux
+    const idToken = await result.user.getIdToken();
+    localStorage.setItem("Token", idToken); // Store token in localStorage
+    dispatch(setToken(idToken)); // Store token in Redux
     navigate("/"); // Navigate to home page
     dispatch(setOpen(false)); // Close modal or login popup
   } catch (error: any) {
@@ -58,8 +59,9 @@ export const userLogin =
         userId: result.user.uid,
       };
       dispatch(setUser(newUser));
-      localStorage.setItem("Token", result.user.accessToken);
-      dispatch(setToken(result.user.accessToken));
+      const idToken = await result.user.getIdToken();
+      localStorage.setItem("Token", idToken);
+      dispatch(setToken(idToken));
       dispatch(setEmail("")); // Reset email input
       dispatch(setPassword("")); // Reset password input
       dispatch(setOpen(false));
@@ -137,6 +139,7 @@ export const logoutUser = () => async (dispatch: AppDispatch) => {
         userId: "",
       })
     );
+
     localStorage.removeItem("Token"); // Clear token from localStorage
     dispatch(setToken("")); // Clear token from Redux state
   } catch (error: any) {

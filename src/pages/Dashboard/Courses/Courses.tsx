@@ -9,7 +9,6 @@ function Courses() {
   const [search, setSearch] = useState<string>("");
   const [open, setOpen] = useState<boolean>(false);
   const [debounceSearch, setDebounceSearch] = useState<string>("");
-
   const [filteredList, setFilteredList] = useState<any[]>([]);
 
   const handleClose = () => {
@@ -38,7 +37,7 @@ function Courses() {
   }, [debounceSearch]);
 
   return (
-    <div className="mx-auto px-2 pt-[140px] md:pt-[10px] md:px-0 flex flex-col mt-28 max-w-[calc(100%-20px)] md:max-w-[calc(100%-260px)]">
+    <div className="mx-auto px-2 pt-[140px] md:pt-[20px] md:px-0 flex flex-col mt-28 max-w-[calc(100%-20px)] md:max-w-[calc(100%-260px)]">
       <CourseForm
         search={search}
         onChange={(e: any) => setSearch(e.target.value)}

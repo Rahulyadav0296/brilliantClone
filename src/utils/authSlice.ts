@@ -1,5 +1,5 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
-import { Course } from "./courseSlice";
+import { CourseState } from "./courseSlice";
 
 interface UserState {
   email: string;
@@ -8,12 +8,17 @@ interface UserState {
   lastName: string;
   age: number | null;
   open: boolean;
+  isOpen: boolean;
   showSignup: boolean;
   user: string | null;
   loading: boolean;
   error: string | null;
   token: string;
-  currentCourse?: Course;
+  currentCourse?: CourseState;
+}
+interface courseState {
+  courses: CourseState[];
+  user: UserState;
 }
 
 const initialState: UserState = {
@@ -23,6 +28,7 @@ const initialState: UserState = {
   lastName: "",
   age: null,
   open: false,
+  isOpen: false,
   showSignup: false,
   user: null,
   loading: false,
@@ -43,6 +49,9 @@ const authSlice = createSlice({
 
     setOpen(state, action: PayloadAction<boolean>) {
       state.open = action.payload;
+    },
+    setIsOpen(state, action: PayloadAction<boolean>) {
+      state.isOpen = action.payload;
     },
 
     setShowSignup(state, action: PayloadAction<boolean>) {
@@ -85,6 +94,7 @@ export const {
   setFirstName,
   setLastName,
   setOpen,
+  setIsOpen,
   setShowSignup,
   setUser,
   setToken,

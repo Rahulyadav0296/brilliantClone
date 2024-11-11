@@ -1,26 +1,28 @@
 import { getAuth } from "firebase/auth";
 import { doc, getDoc } from "firebase/firestore";
 import { FC, useEffect, useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import { setError, setLoading } from "../../../../utils/authSlice";
 import { db } from "../../../../utils/firebaseConfig";
 import CalenderItem from "./CalenderItem/CalenderItem";
 import IconDetails from "./IconDetails/IconDetails";
 import UnlockLeague from "./UnlockLeague/UnlockLeague";
 
+interface UserData {
+  id: string;
+  firstName: string;
+  // Add other properties as needed
+}
+
 const LeftHome: FC = () => {
   const dispatch = useDispatch();
-  const [singleUser, setSingleUser] = useState(null);
+  const [singleUser, setSingleUser] = useState<string | null>(null);
   const [showCalender, setShowCalender] = useState<boolean>(false);
-  const error = useSelector(
-    (state: { course: { error: string } }) => state.course.error
-  );
 
   useEffect(() => {
     const fetchUser = async () => {
       dispatch(setLoading(true));
       try {
-        // Get the current user ID from Firebase Auth
         const auth = getAuth();
         const user = auth.currentUser;
         if (!user) {
@@ -28,15 +30,14 @@ const LeftHome: FC = () => {
           return;
         }
 
-        const userId = user.uid; // Get logged-in user's unique ID
+        const userId = user.uid;
         console.log("Fetching document with user ID:", userId);
 
-        // Fetch document with user's ID
         const docRef = doc(db, "users", userId);
         const docSnap = await getDoc(docRef);
 
         if (docSnap.exists()) {
-          const userData = { id: docSnap.id, ...docSnap.data() };
+          const userData = { id: docSnap.id, ...(docSnap.data() as UserData) };
           setSingleUser(userData.firstName);
         } else {
           console.log("No such document!");
@@ -44,7 +45,7 @@ const LeftHome: FC = () => {
         }
       } catch (error) {
         console.error("Error Fetching User Data: ", error);
-        dispatch(setError(error));
+        dispatch(setError(String(error)));
       } finally {
         dispatch(setLoading(false));
       }
@@ -70,11 +71,6 @@ const LeftHome: FC = () => {
         {!showCalender && <CalenderItem />}
       </div>
       <UnlockLeague />
-      {error && (
-        <p className="text-center text-red-500 font-bold text-[15px]">
-          {error}
-        </p>
-      )}
     </div>
   );
 };

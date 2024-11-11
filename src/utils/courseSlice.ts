@@ -26,14 +26,12 @@ const courseSlice = createSlice({
     setCourses: (state, action: PayloadAction<CourseState>) => {
       return { ...state, ...action.payload };
     },
-    updateProgress(state, action: PayloadAction<number>) {
-      state.progress = action.payload;
-    },
+
     resetCourse() {
       return initialState;
     },
   },
 });
 
-export const { setCourses, updateProgress, resetCourse } = courseSlice.actions;
+export const { setCourses, resetCourse } = courseSlice.actions;
 export default courseSlice.reducer;

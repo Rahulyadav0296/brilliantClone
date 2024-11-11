@@ -15,7 +15,7 @@ const Input: FC<InputProps> = ({ type, value, onChange, placeholder }) => {
       onChange={onChange}
       required
       placeholder={placeholder}
-      className="border-black my-2 ml-2 text-black border-2 w-full p-2 rounded-lg"
+      className="border-black my-2 ml-2 text-black border-2 w-[90%] max-w-[320px] md:w-full p-2 md:p-3 rounded-lg"
     />
   );
 };

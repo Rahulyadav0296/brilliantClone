@@ -3,7 +3,7 @@ import { FC } from "react";
 
 interface CourseFormProps {
   search: string;
-  onChange: () => void;
+  onChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
 }
 
 const CourseForm: FC<CourseFormProps> = ({ search, onChange }) => {

@@ -27,7 +27,7 @@ const SigninForm: FC = () => {
   };
   return (
     <>
-      <form className="text-center" onSubmit={handleEmailPasswordLogin}>
+      <form className="text-center " onSubmit={handleEmailPasswordLogin}>
         <Input
           type="email"
           value={email}

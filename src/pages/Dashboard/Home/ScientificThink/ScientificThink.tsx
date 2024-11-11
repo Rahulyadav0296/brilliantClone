@@ -1,10 +1,11 @@
-import React, { FC } from "react";
+import { FC } from "react";
+import { useNavigate } from "react-router-dom";
 
-interface ScientificThinkProps {
-  handleContinue: (event: React.MouseEvent<HTMLButtonElement>) => void;
-}
-
-const ScientificThink: FC<ScientificThinkProps> = (handleContinue) => {
+const ScientificThink: FC = () => {
+  const navigate = useNavigate();
+  const handleContinue = () => {
+    navigate("/courses");
+  };
   return (
     <div className="flex flex-col border-b-4 border border-gray-500 pb-6 rounded-3xl mb-10">
       <img

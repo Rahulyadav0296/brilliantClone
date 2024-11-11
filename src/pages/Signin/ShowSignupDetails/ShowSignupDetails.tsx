@@ -11,7 +11,7 @@ const ShowSignupDetails: FC<ShowSignupDetailsProps> = ({
 }) => {
   return (
     <>
-      <p className="text-center mt-6 ">
+      <p className="text-center mt-2 mb-4">
         Existing user?{" "}
         <span
           onClick={onClick}
