@@ -6,7 +6,7 @@ const StarRatings: FC = () => {
   for (let i = 0; i < 5; i++) {
     stars.push(<StarIcon key={i} />);
   }
-  return <div>{stars}</div>;
+  return <div className="border-none">{stars}</div>;
 };
 
 export default StarRatings;

@@ -7,7 +7,7 @@ import Ratings from "./Ratings/Ratings";
 const Landing: FC = () => {
   return (
     <>
-      <div className="mx-auto px-2 pt-40 flex flex-col md:flex-row items-center justify-between mt-5 max-w-[calc(100%-20px)] md:max-w-[calc(100%-260px)]">
+      <div className="mx-auto px-2 pt-20 flex flex-col md:flex-row items-center justify-between mt-5 max-w-[calc(100%-20px)] md:max-w-[calc(100%-260px)]">
         {/* Left Content of the landing page which shows Learn by doing details  */}
         <LearnByDoing />
         {/* Show the visualization to the right side  */}

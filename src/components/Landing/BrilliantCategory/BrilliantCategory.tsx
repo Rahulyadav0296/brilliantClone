@@ -20,7 +20,7 @@ const items = [
 
 function BrilliantCategory() {
   return (
-    <div className="flex flex-col md:flex-row justify-between mb-3">
+    <div className="flex flex-wrap justify-between mb-3">
       {/* Math, Data Analysis, Computer science, Programming & AI, Science & Engineering */}
       {items.map((item) => (
         <div key={item.id}>

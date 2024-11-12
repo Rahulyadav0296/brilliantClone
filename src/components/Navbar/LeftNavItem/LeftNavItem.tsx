@@ -9,10 +9,6 @@ function LeftNavItem() {
     (state: { auth: { token: string } }) => state.auth.token
   );
 
-  const isOpen = useSelector(
-    (state: { auth: { isOpen: boolean } }) => state.auth.isOpen
-  );
-
   return (
     <ul className="flex flex-col sm:flex-row justify-between items-center sm:ml-8 text-[20px] mt-4 w-full sm:w-[450px] px-1">
       <li className="text-[28px] sm:text-[35px] mb-2 sm:mb-0">
@@ -23,7 +19,7 @@ function LeftNavItem() {
           Brilliant
         </Link>
       </li>
-      {!isOpen && token.length > 0 && (
+      {token.length > 0 && (
         <>
           {/* for reducing the code line define the component ListItem which show the information of the list  */}
           <ListItem url="/home">

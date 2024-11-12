@@ -15,6 +15,9 @@ const CourseCategory: FC = () => {
   const category = useSelector(
     (state: { course: { category: string } }) => state.course.category
   );
+  const isOpen = useSelector(
+    (state: { auth: { isOpen: false } }) => state.auth.isOpen
+  );
   const [activeSection, setActiveSection] = useState<string | null>(category);
 
   useEffect(() => {
@@ -35,33 +38,37 @@ const CourseCategory: FC = () => {
   };
 
   return (
-    <div
-      className={`${
-        isScrolled
-          ? "fixed top-[210px] md:top-12"
-          : "fixed top-[350px] md:top-[250px]"
-      } transition-all duration-75 w-full z-10 flex flex-wrap justify-left gap-4 mt-4 p-4 shadow- bg-white`}
-    >
-      {categories.map((category) => (
-        <ScrollLink
-          key={category.id}
-          to={category.course.replace(" ", "").toLowerCase()}
-          smooth={true}
-          duration={500}
-          offset={-70}
-          onClick={() => {
-            handleCategoryClick(category.course);
-          }}
-          className={` mr-0 md:mr-3 mt-4 border border-gray-400 p-2 rounded-3xl ${
-            activeSection === category.course
-              ? "border-2 border-black font-bold"
-              : "hover:border-black hover:font-bold"
-          } `}
+    <>
+      {!isOpen && (
+        <div
+          className={`${
+            isScrolled
+              ? "fixed top-[88px] md:top-[80px]"
+              : "fixed top-[250px] md:top-[250px]"
+          } transition-all duration-75 w-full z-10 flex flex-wrap justify-left gap-4 p-2 cursor-pointer bg-white `}
         >
-          {category.course}
-        </ScrollLink>
-      ))}
-    </div>
+          {categories.map((category) => (
+            <ScrollLink
+              key={category.id}
+              to={category.course.replace(" ", "").toLowerCase()}
+              smooth={true}
+              duration={500}
+              offset={-70}
+              onClick={() => {
+                handleCategoryClick(category.course);
+              }}
+              className={` mr-0 md:mr-3 mt-4 border border-gray-400 p-2 rounded-3xl ${
+                activeSection === category.course
+                  ? "border-2 border-black font-bold"
+                  : "hover:border-black hover:font-bold"
+              } `}
+            >
+              {category.course}
+            </ScrollLink>
+          ))}
+        </div>
+      )}
+    </>
   );
 };
 

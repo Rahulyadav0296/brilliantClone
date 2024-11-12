@@ -15,7 +15,7 @@ const Ratings: FC = () => {
         </p>
         <StarContainer />
         <Trustpilot />
-        <div className="flex flex-col md:flex-row">
+        <div className="flex flex-wrap">
           <Images image="./appOfTheDay.png" alt="app of the day" />
           <Images image="./images.png" alt="Editor Choice" />
         </div>

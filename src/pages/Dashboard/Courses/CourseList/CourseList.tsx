@@ -4,7 +4,7 @@ import Course from "../Course/Course";
 
 const CourseList: FC = () => {
   return (
-    <div className="pt-10 mt-10">
+    <div className="pt-20 mt-10">
       <Element name="New Courses" id="newcourses" className="pt-20">
         <h1 className="text-[20px] font-bold my-3">New Courses</h1>
         <Course showContent="New Courses" />

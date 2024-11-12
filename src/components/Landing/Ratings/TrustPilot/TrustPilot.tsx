@@ -4,10 +4,12 @@ import StarRatings from "../StarRatings/StarRatings";
 
 const Trustpilot: FC = () => {
   return (
-    <div className="my-4">
-      <StarIcon className="text-green-500" />
-      <span>Trustpilot</span>
-      <div className="text-green-500 border">
+    <div className="my-4 flex flex-">
+      <div className="flex flex-wrap">
+        <StarIcon className="text-green-500" />
+        <span>Trustpilot</span>
+      </div>
+      <div className="text-green-500 mt-2">
         <StarRatings />
       </div>
     </div>

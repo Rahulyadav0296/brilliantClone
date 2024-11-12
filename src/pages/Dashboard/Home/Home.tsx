@@ -11,7 +11,7 @@ const Home: FC = () => {
   console.log("Progress is: ", progress);
 
   return (
-    <div className="mx-auto w-full md:w-[70%] px-2 pt-20 my-40 md:my-10 flex flex-col md:flex-row  md:justify-between max-w-[calc(100%-20px)] md:max-w-[calc(100%-260px)]">
+    <div className="mx-auto w-full md:w-[70%]  px-2  mt-[130px] md:my-10 flex flex-col md:flex-row  md:justify-between max-w-[calc(100%-20px)] md:max-w-[calc(100%-260px)]">
       {/* show the left content details including calender current user and unlock league blog  */}
       <LeftHome />
       <div className="mt-6 p-3 w-full md:w-[50%]  h-auto mr-0 md:mr-8">
