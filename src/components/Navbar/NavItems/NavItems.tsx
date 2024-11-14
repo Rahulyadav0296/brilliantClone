@@ -2,7 +2,7 @@ import { FC } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import Signin from "../../../pages/Signin/Signin";
 import { logoutUser } from "../../../utils/authActions";
-import { setIsOpen, setOpen } from "../../../utils/authSlice";
+import { setOpen } from "../../../utils/authSlice";
 import { AppDispatch } from "../../../utils/store";
 import LeftNavItem from "../LeftNavItem/LeftNavItem";
 import NavButton from "../NavButton/NavButton";
@@ -13,13 +13,6 @@ const NavItems: FC = () => {
   const token = useSelector(
     (state: { auth: { token: string } }) => state.auth.token
   );
-  const isOpen = useSelector(
-    (state: { auth: { isOpen: boolean } }) => state.auth.isOpen
-  );
-
-  const toggleSidebar = () => {
-    dispatch(setIsOpen(!isOpen));
-  };
 
   const handleLogin = () => {
     dispatch(setOpen(true));

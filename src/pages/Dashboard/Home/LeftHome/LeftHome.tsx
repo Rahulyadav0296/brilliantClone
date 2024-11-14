@@ -37,7 +37,8 @@ const LeftHome: FC = () => {
         const docSnap = await getDoc(docRef);
 
         if (docSnap.exists()) {
-          const userData = { id: docSnap.id, ...(docSnap.data() as UserData) };
+          const userData = { ...(docSnap.data() as UserData), id: docSnap.id };
+
           setSingleUser(userData.firstName);
         } else {
           console.log("No such document!");

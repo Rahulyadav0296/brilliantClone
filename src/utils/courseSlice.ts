@@ -1,14 +1,14 @@
 // redux/courseSlice.ts
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 
-interface CourseState {
+export type CourseState = {
   id: string;
   title: string;
   category: "New Courses" | "Math" | "Data" | "Computer Science" | "Science";
   isNew: boolean;
   image: string;
   progress?: number;
-}
+};
 
 const initialState: CourseState = {
   id: "",

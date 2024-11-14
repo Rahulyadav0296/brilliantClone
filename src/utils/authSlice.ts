@@ -16,10 +16,6 @@ interface UserState {
   token: string;
   currentCourse?: CourseState;
 }
-interface courseState {
-  courses: CourseState[];
-  user: UserState;
-}
 
 const initialState: UserState = {
   email: "",
