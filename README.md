@@ -13,16 +13,22 @@ Available Scripts
 Contributing
 License
 Features
+
 Landing Page: A clean and modern landing page showcasing the platform’s capabilities.
+
 Authentication: Secure sign-up and login with Firebase, including error handling and validation.
 Course Dashboard: Displays available courses for the user with a minimalistic, user-friendly design.
 State Management: Utilized Redux for global state management to ensure a seamless user experience.
+
+
 Technologies Used
 React with TypeScript: For building a scalable, type-safe front-end.
 Redux: For efficient and centralized state management across components.
 Firebase Authentication: To handle user sign-up, login, and authentication status.
 Vercel: For seamless deployment and hosting of the application.
-CSS Modules (or styled-components if applicable): For scoped and maintainable styling.
+CSS Modules : Tailwind css
+
+
 Getting Started
 Follow these instructions to set up and run the project locally.
 
@@ -32,22 +38,20 @@ A Firebase project for authentication.
 Installation
 Clone the repository:
 
-bash
-Copy code
 git clone https://github.com/rahulyadav0296/brilliant-clone.git
 cd brilliant-clone
 Install dependencies:
 
-bash
-Copy code
 npm install
 Firebase Configuration:
 
 Go to your Firebase Console.
 Create a project and enable authentication (e.g., Email/Password).
+
+
 Copy your Firebase configuration and create a .env file in the root of your project:
 env
-Copy code
+
 REACT_APP_FIREBASE_API_KEY=your_api_key
 REACT_APP_FIREBASE_AUTH_DOMAIN=your_auth_domain
 REACT_APP_FIREBASE_PROJECT_ID=your_project_id
